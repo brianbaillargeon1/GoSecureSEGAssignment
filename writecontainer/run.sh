@@ -1,1 +1,1 @@
-java -jar target/*with-dependencies.jar
+java -jar target/*with-dependencies.jar people.csv

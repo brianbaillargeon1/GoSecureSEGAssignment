@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+    container_name: "personContainer"
+    ports:
+      - 6379:6379
+  writecontainer:
+    build: ./writecontainer
+    links:
+      - redis:personContainer
+    environment:
+      - REDIS_HOST=personContainer
+      - REDIS_PORT=6379
