@@ -11,7 +11,7 @@ The rows are serialized as JSON, and then inserted against the "person" key in R
 
 ### Architecture Diagram
 
-![An archictectural diagram](GoSecureSEGAssignment_Architecture.svg)
+![An archictectural diagram](GoSecureSEGAssignment_Architecture.png)
 
 ## Setup Instructions
 
