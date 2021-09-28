@@ -40,7 +40,7 @@ public class RedisWriterTest
 	public void testWriteAndRead()
 	{
 		RedisWriter writer = new RedisWriter();
-		writer.connect();
+		writer.connect("localhost");
 
 		// Write John Doe as a test key
 		writer.writePerson("test_person", createJohnDoe());

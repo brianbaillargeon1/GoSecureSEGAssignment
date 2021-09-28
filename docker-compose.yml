@@ -10,6 +10,12 @@ services:
     build: ./writecontainer
     links:
       - redis:personContainer
+  readcontainer:
+    build: ./readcontainer
+    links:
+      - redis:personContainer
     environment:
-      - REDIS_HOST=personContainer
-      - REDIS_PORT=6379
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "0.0.0.0:8080:8080"
+

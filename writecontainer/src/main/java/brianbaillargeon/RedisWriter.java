@@ -24,15 +24,17 @@ public class RedisWriter
 
 	public static void main( String[] args )
 	{
+		// Relative file path to the CSV; default: ./people.csv
+		String peopleFile = args.length > 0 ? args[0] : "people.csv";
+		// hostname of the Redis container
+		String hostname = args.length > 1 ? args[1] : "personContainer";
+
 		// Connect to Redis
 		System.out.println("Attempting to connect to Redis...");
 		RedisWriter redisWriter = new RedisWriter();
-		redisWriter.connect();
+		redisWriter.connect(hostname);
 		System.out.println("Connection successful");
 		
-		// Grab the filename; default: people.csv
-		String peopleFile = args.length > 0 ? args[0] : "people.csv";
-
 		System.out.println("Reading from file, and writing to Redis...");
 		// Read people from the file, then write them to redis
 		readPeople(peopleFile).stream().forEach(person -> {
@@ -47,11 +49,11 @@ public class RedisWriter
 	}
 
 	/**
-	 * Connects to redis
+	 * Connects to redis at the specified hostname
 	 */
-	public void connect()
+	public void connect(String hostname)
 	{
-		jedis = new Jedis("personContainer", 6379);
+		jedis = new Jedis(hostname, 6379);
 	}
 
 	/**
