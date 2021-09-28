@@ -1,5 +1,18 @@
 # GoSecureSEGAssignment
 
+## Overview
+
+This project consists of 3 containers:
+- A Redis data store
+- A java-based container that reads from a CSV file with 4 columns:
+Name, Address, Phone Number, and Email
+The rows are serialized as JSON, and then inserted against the "person" key in Redis as a set.
+- A Python-based container that contains an HTTPServer. When a browser requests the "/people" URI, the HTTPServer queries the "person" key in Redis, then deserializes and displays the results.
+
+### Architecture Diagram
+
+![An archictectural diagram](GoSecureSEGAssignment_Architecture.svg)
+
 ## Setup Instructions
 
 ### 1) Build the writecontainer module:
